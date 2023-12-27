@@ -13,9 +13,9 @@ namespace StudentManagement.UI.Controllers
             _accountService = accountService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber, int pageSize)
         {
-            return View();
+            return View(_accountService.GetAllTeacher(pageNumber, pageSize));
         }
         [HttpGet]
         public IActionResult Create()

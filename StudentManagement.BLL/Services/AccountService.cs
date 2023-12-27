@@ -40,6 +40,40 @@ namespace StudentManagement.BLL.Services
             return true;
         }
 
+        public PagedResult<TeacherViewModel> GetAllTeacher(int pageNumber, int PageSize)
+        {
+            try
+            {
+                int excludeRecords = (PageSize * pageNumber) - PageSize;
+                List<TeacherViewModel> teacherViewModel = new List<TeacherViewModel>();
+
+                var usersList = _unitOfWork.GenericRepository<Users>()
+                    .GetAll().Where(x => x.Role == (int)EnumRoles.Teacher)
+                    .Skip(excludeRecords).Take(PageSize).ToList();
+
+                teacherViewModel = ListInfo(usersList);
+                var result = new PagedResult<TeacherViewModel>
+                {
+                    Data = teacherViewModel,
+                    TotalItems = _unitOfWork.GenericRepository<Users>()
+                    .GetAll().Where(x => x.Role == (int)EnumRoles.Teacher).Count(),
+                    PageNumber = pageNumber,
+                    PageSize = PageSize
+                };
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private List<TeacherViewModel> ListInfo(List<Users> usersList)
+        {
+           return usersList.Select(x => new TeacherViewModel(x)).ToList();
+        }
+
         public LoginViewModel Login(LoginViewModel loginViewModel)
         {
 

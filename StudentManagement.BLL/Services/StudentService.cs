@@ -56,7 +56,7 @@ namespace StudentManagement.BLL.Services
 
         private List<StudentsViewModel> ListInfo(List<Student> studentsList)
         {
-            return studentsList.Select(x => new StudentsViewModel(x).ToList());
+            return studentsList.Select(x => new StudentsViewModel(x)).ToList();
         }
     }
 }

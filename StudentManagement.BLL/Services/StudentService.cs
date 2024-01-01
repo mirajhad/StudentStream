@@ -54,6 +54,33 @@ namespace StudentManagement.BLL.Services
            
         }
 
+        public bool SetGroupIdToStudent(GroupStudentViewModel viewModel)
+        {
+            try
+            {
+                foreach (var item in viewModel.StudentList)
+                {
+                    var student = _unitOfWork.GenericRepository<Student>().GetById(item.Id);
+                    if (item.IsChecked)
+                    {
+                        student.GroupsId = viewModel.GroupId;
+                        _unitOfWork.GenericRepository<Student>().Update(student);
+                    }
+                    else
+                    {
+                        student.GroupsId = null;
+                    }
+                }
+                _unitOfWork.Save();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         private List<StudentsViewModel> ListInfo(List<Student> studentsList)
         {
             return studentsList.Select(x => new StudentsViewModel(x)).ToList();

@@ -11,7 +11,7 @@ namespace StudentManagement.BLL.Services
 {
     public class ExamService : IExamService
     {
-        private IUnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork ;
 
         public ExamService(IUnitOfWork unitOfWork)
         {
@@ -62,6 +62,15 @@ namespace StudentManagement.BLL.Services
                 throw;
             }
         }
+
+        public IEnumerable<ExamViewModel> GetAllExams()
+        {
+            List<ExamViewModel> examList = new List<ExamViewModel>();
+            var exams = _unitOfWork.GenericRepository<Exams>().GetAll().ToList();
+            examList = ListInfo(exams);
+            return examList;
+        } 
+
         private List<ExamViewModel> ListInfo(List<Exams> examList)
         {
             return examList.Select(x => new ExamViewModel(x)).ToList();

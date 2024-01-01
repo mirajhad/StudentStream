@@ -12,5 +12,7 @@ namespace StudentManagement.BLL.Services
         PagedResult<ExamViewModel> GetAll(int pageNumber, int pageSize);
        void AddExam(CreateExamsViewModel viewModel);
 
+        IEnumerable<ExamViewModel> GetAllExams();
+
     }
 }

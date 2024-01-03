@@ -77,5 +77,10 @@ namespace StudentManagement.UI.Controllers
             bool result = _studentService.SetExamResult(viewModel);
             return RedirectToAction("");
         }
+
+        //public IActionResult Result(int studentId)
+        //{
+        //    var model = _studentService.GetExamResults(studentId);
+        //}
     }
 }

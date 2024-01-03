@@ -10,8 +10,9 @@ namespace StudentManagement.Data.Entities
     {
         public int Id { get; set; }
         public int StudentId { get; set; }
-        public int QnAsId { get; set; }
+        public virtual Student Student { get; set; }
         public int ExamId { get; set; }
+        public virtual Exams Exam { get; set; }
         public int Answer { get; set; }
     }
 }

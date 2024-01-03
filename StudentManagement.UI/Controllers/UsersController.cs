@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentManagement.BLL.Services;
 using StudentManagement.Models;
+using StudentManagement.UI.Filters;
 
 namespace StudentManagement.UI.Controllers
 {
+    [RoleAuthorize(1)]
     public class UsersController : Controller
     {
         private IAccountService _accountService;

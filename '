@@ -1,0 +1,71 @@
+[33mcommit 727ef617f82ce684aaf67ed8adc7589c25a41302[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Wed Jan 3 15:00:34 2024 +0530
+
+    Design View and pagination
+
+[33mcommit 2937610009c9a3c8881ebe08056cef7ace0bf905[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Wed Jan 3 10:05:41 2024 +0530
+
+    Object Relationship Seed Admin Role and User
+
+[33mcommit c90244cdcd297e73d3f3305f947aff8f4081a417[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Tue Jan 2 09:31:51 2024 +0530
+
+    Exam View Model Exam service
+
+[33mcommit ad1f06b10ac7f353317006c4fe3a071e428d6b8b[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Mon Jan 1 21:39:47 2024 +0530
+
+    Question and Answer Service
+
+[33mcommit 1054b89a5ffa15f4119b52303cd6453fab1edb88[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Mon Jan 1 11:22:16 2024 +0530
+
+    Create new Exam
+
+[33mcommit 02d4288741e63f5be73a60dc359069d504c98a6a[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Sun Dec 31 13:22:47 2023 +0530
+
+    resolved error
+
+[33mcommit 1837ff9c8e3e9c902e03c630789208bd0c060c4f[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Sun Dec 31 13:17:25 2023 +0530
+
+    Student Service and related Data
+
+[33mcommit 51a6d8a194a5bce2dde13591e010534edea414f1[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Wed Dec 27 17:44:09 2023 +0530
+
+    Group Service and Related Data
+
+[33mcommit e55a5c843f70f9fce39a85e4561581bece5e24d0[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Wed Dec 27 11:20:05 2023 +0530
+
+    controller added
+
+[33mcommit 9c374068898bdbc2967220ef06a53edef6592792[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Tue Dec 26 13:48:52 2023 +0530
+
+    models add
+
+[33mcommit 532215076a698ee45ec4531ee3ad3f2f4d8de83f[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Thu Dec 21 10:36:48 2023 +0530
+
+    Add project files.
+
+[33mcommit a535740536e929fdfdc754ffe6510edac2b865b6[m
+Author: mirajhad <mirajhadish48@gmail.com>
+Date:   Thu Dec 21 10:36:45 2023 +0530
+
+    Add .gitattributes, .gitignore, README.md, and LICENSE.txt.

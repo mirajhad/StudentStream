@@ -15,7 +15,7 @@ namespace StudentManagement.UI.Controllers
             _examService = examService;
         }
 
-        public IActionResult Index(int pageNumber, int pageSize)
+        public IActionResult Index(int pageNumber=1, int pageSize=10)
         {
             return View(_examService.GetAll(pageNumber, pageSize));
         }

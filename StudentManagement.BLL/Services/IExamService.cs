@@ -10,8 +10,7 @@ namespace StudentManagement.BLL.Services
     public interface IExamService
     {
         PagedResult<ExamViewModel> GetAll(int pageNumber, int pageSize);
-       void AddExam(CreateExamsViewModel viewModel);
-
+        void AddExam(CreateExamsViewModel viewModel);
         IEnumerable<ExamViewModel> GetAllExams();
 
     }

@@ -35,9 +35,9 @@ namespace StudentManagement.UI.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber=1, int pageSize=10)
         {
-            return View();
+            return View(_studentService.GetAllStudents(pageNumber, pageSize));
         }
         [HttpGet]
         public IActionResult AttendExam()

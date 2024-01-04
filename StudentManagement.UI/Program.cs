@@ -15,6 +15,11 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IQnAsService, QnAsService>();
+
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

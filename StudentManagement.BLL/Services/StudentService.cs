@@ -54,6 +54,41 @@ namespace StudentManagement.BLL.Services
            
         }
 
+        public PagedResult<StudentViewModel> GetAllStudents(int pageNumber, int pageSize)
+        {
+            try
+            {
+                int excludeRecords = (pageSize * pageNumber) - pageSize;
+                List<StudentViewModel> studentViewModel = new List<StudentViewModel>();
+
+                var studentList = _unitOfWork.GenericRepository<Student>()
+                    .GetAll()
+                    .Skip(excludeRecords).Take(pageSize).ToList();
+
+                studentViewModel = ConvertToStudentVM(studentList);
+                var result = new PagedResult<StudentViewModel>
+                {
+                    Data = studentViewModel,
+                    TotalItems = _unitOfWork.GenericRepository<Student>()
+                    .GetAll()
+                    .Count(),
+                    PageNumber = pageNumber,
+                    PageSize = pageSize
+                };
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private List<StudentViewModel> ConvertToStudentVM(List<Student> studentList)
+        {
+            return studentList.Select(x => new StudentViewModel(x)).ToList();
+        }
+
         public IEnumerable<ResultViewModel> GetExamResults(int studentId)
         {
             throw new NotImplementedException();

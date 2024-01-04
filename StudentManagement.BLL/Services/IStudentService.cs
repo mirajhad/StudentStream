@@ -9,6 +9,7 @@ namespace StudentManagement.BLL.Services
 {
     public interface IStudentService
     {
+        PagedResult<StudentViewModel> GetAllStudents(int pageNumber, int pageSize);
         Task<int> AddStudentAsync(CreateStudentViewModel vm);
         IEnumerable<StudentsViewModel> GetAll();
         IEnumerable<ResultViewModel> GetExamResults(int studentId);

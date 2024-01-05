@@ -149,5 +149,34 @@ namespace StudentManagement.BLL.Services
         {
             return studentsList.Select(x => new StudentsViewModel(x)).ToList();
         }
+
+        public StudentProfileViewModel GetStudentById(int studentId)
+        {
+            var student = _unitOfWork.GenericRepository<Student>().GetById(studentId);
+            var studentProfile = new StudentProfileViewModel(student);
+            return studentProfile;
+        }
+
+        public void UpdateProfile(StudentProfileViewModel studentProfile)
+        {
+            try
+            {
+                var student = _unitOfWork.GenericRepository<Student>().GetById(studentProfile.Id);
+                if (student != null)
+                {
+                    student.Name = studentProfile.Name;
+                    student.Contact = studentProfile.Contact;
+                    student.ProfilePicture = studentProfile.ProfilePicture != null ? studentProfile.ProfilePicture : student.ProfilePicture;
+                    student.CVFileName = studentProfile.CVFileName != null ? studentProfile.CVFileName : student.CVFileName;
+                    _unitOfWork.GenericRepository<Student>().Add(student);
+                    _unitOfWork.Save();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

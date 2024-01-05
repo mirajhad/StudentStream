@@ -10,17 +10,44 @@ namespace StudentManagement.UI.Controllers
         private IStudentService _studentService;
         private IExamService _examService;
         private IQnAsService _qnAsService;
+        private IUtilityService _utilityService;
+        private string containerName = "StudentImage";
+        private string cvContainerName = "StudentCV";
 
-        public StudentsController(IStudentService studentService, IExamService examService, IQnAsService qnAsService)
+        public StudentsController(IStudentService studentService, IExamService examService, IQnAsService qnAsService, IUtilityService utilityService)
         {
             _studentService = studentService;
             _examService = examService;
             _qnAsService = qnAsService;
+            _utilityService = utilityService;
         }
 
         [HttpGet]
         public IActionResult Create() 
         {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var sessionObj = HttpContext.Session.GetString("loginDetails");
+            if (sessionObj!=null)
+            {
+                var loginViewModel = JsonConvert.DeserializeObject<LoginViewModel>(sessionObj);
+                var studentDetails = _studentService.GetStudentById(loginViewModel.Id);
+                return View(studentDetails);
+            }
+            return RedirectToAction("Login", "Accounts");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(StudentProfileViewModel vm)
+        {
+            if(vm.ProfilePictureUrl != null)       
+                vm.ProfilePicture = await _utilityService.SaveImage(containerName, vm.ProfilePictureUrl);
+            if (vm.CvFileUrl != null)
+                vm.CVFileName = await _utilityService.SaveImage(cvContainerName, vm.CvFileUrl);
+            _studentService.UpdateProfile(vm);
             return View();
         }
 

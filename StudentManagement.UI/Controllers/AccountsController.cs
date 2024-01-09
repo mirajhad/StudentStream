@@ -70,7 +70,7 @@ namespace StudentManagement.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Students");
+                return RedirectToAction("Profile", "Students");
             }
         }
     }

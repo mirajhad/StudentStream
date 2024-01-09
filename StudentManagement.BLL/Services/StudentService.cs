@@ -168,7 +168,7 @@ namespace StudentManagement.BLL.Services
                     student.Contact = studentProfile.Contact;
                     student.ProfilePicture = studentProfile.ProfilePicture != null ? studentProfile.ProfilePicture : student.ProfilePicture;
                     student.CVFileName = studentProfile.CVFileName != null ? studentProfile.CVFileName : student.CVFileName;
-                    _unitOfWork.GenericRepository<Student>().Add(student);
+                    _unitOfWork.GenericRepository<Student>().Update(student);
                     _unitOfWork.Save();
                 }
             }

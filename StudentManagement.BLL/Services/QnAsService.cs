@@ -73,8 +73,8 @@ namespace StudentManagement.BLL.Services
         public bool IsAttendExam(int examId, int studentId)
         {
             var result = _unitOfWork.GenericRepository<ExamResults>().GetAll()
-                .Where(x => x.ExamId == examId && x.StudentId == studentId);
-            return result==null ? false : true;
+                .Any(x => x.ExamId == examId && x.StudentId == studentId);
+            return result==false ? false : true;
         }
 
         private List<QnAsViewModel> ListInfo(List<QnAs> modelList)

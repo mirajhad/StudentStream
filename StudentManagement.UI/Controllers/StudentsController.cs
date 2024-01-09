@@ -48,7 +48,7 @@ namespace StudentManagement.UI.Controllers
             if (vm.CvFileUrl != null)
                 vm.CVFileName = await _utilityService.SaveImage(cvContainerName, vm.CvFileUrl);
             _studentService.UpdateProfile(vm);
-            return View();
+            return RedirectToAction("profile");
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace StudentManagement.UI.Controllers
             var model = new AttendExamViewModel();
             string loginObj = HttpContext.Session.GetString("loginDetails");
             LoginViewModel sessionObj = JsonConvert.DeserializeObject<LoginViewModel>(loginObj);
-            if(sessionObj == null)
+            if (sessionObj != null)
             {
                 model.StudentId = sessionObj.Id;
                 var todayExam = _examService.GetAllExams().Where(x => x.StartDate.Date == DateTime.Today.Date).FirstOrDefault();
@@ -86,6 +86,7 @@ namespace StudentManagement.UI.Controllers
                     {
                         model.QnAsList = _qnAsService.GetAllByExamId(todayExam.Id).ToList();
                         model.ExamName = todayExam.Title;
+                        model.Message = "";
                         return View(model);
                     }
                     else

@@ -1,3 +1,4 @@
+using ConcertBooking.Repositories.Implementations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using StudentManagement.BLL.Services;
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IQnAsService, QnAsService>();
+builder.Services.AddScoped<IUtilityService, UtilityService>();
 
 
 

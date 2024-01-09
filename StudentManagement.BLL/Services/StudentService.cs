@@ -91,7 +91,35 @@ namespace StudentManagement.BLL.Services
 
         public IEnumerable<ResultViewModel> GetExamResults(int studentId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var examResults = _unitOfWork.GenericRepository<ExamResults>().GetAll().Where(x => x.StudentId == studentId);
+                var students = _unitOfWork.GenericRepository<Student>().GetAll();
+                var exams = _unitOfWork.GenericRepository<Exams>().GetAll();
+                var qnas = _unitOfWork.GenericRepository<QnAs>().GetAll();
+
+                var requiredData = examResults.Join(students, er => er.StudentId, s => s.Id, (er, st) => new { er, st })
+                    .Join(exams, erj => erj.er.ExamId, ex => ex.Id, (erj, ex) => new { erj, ex })
+                    .Join(qnas, exj => exj.erj.er.QnAsId, q => q.Id, (exj, q) =>
+                    new ResultViewModel()
+                    {
+                        StudentId = studentId,
+                        ExamName = exj.ex.Title,
+                        TotalQuestion = examResults.Count(a=>a.StudentId == studentId && a.ExamId==exj.ex.Id),
+                        CorrectAnswer = examResults.Count(a=>a.StudentId == studentId && a.ExamId == exj.ex.Id
+                        && a.Answer == q.Answer
+                        ),
+                        WrongAnswer = examResults.Count(a=>a.StudentId == studentId && a.ExamId == exj.ex.Id
+                        && a.Answer != q.Answer)
+                    });
+                return requiredData;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public bool SetExamResult(AttendExamViewModel viewModel)
@@ -103,7 +131,7 @@ namespace StudentManagement.BLL.Services
                     ExamResults result = new ExamResults();
                     result.StudentId = viewModel.StudentId;
                     result.ExamId = item.ExamsId;
-                    //result.QnAsId = item.Id;
+                    result.QnAsId = item.Id;
                     result.Answer = item.Answer;
                     _unitOfWork.GenericRepository<ExamResults>().Add(result);
                     _unitOfWork.Save();

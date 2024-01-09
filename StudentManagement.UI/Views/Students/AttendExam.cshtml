@@ -1,6 +1,5 @@
 ﻿@model AttendExamViewModel
 <h1>@Model.ExamName</h1>
-<h3>Exam Paper</h3>
 @if (Model.Message == "")
 {
     <form asp-action="AttendExam" asp-controller="students" method="post">
@@ -25,4 +24,8 @@
         </ul>
         <button type="submit">Submit</button>
     </form>
+}
+else
+{
+    <h1 class="alert alert-danger">No Exam</h1>
 }

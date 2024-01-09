@@ -106,9 +106,16 @@ namespace StudentManagement.UI.Controllers
             return RedirectToAction("");
         }
 
-        //public IActionResult Result(int studentId)
-        //{
-        //    var model = _studentService.GetExamResults(studentId);
-        //}
+        public IActionResult Result()
+        {
+            var sessionObj = HttpContext.Session.GetString("loginDetails");
+            if (sessionObj != null)
+            {
+                var loginViewModel = JsonConvert.DeserializeObject<LoginViewModel>(sessionObj);
+                var model = _studentService.GetExamResults(Convert.ToInt32(loginViewModel.Id));
+                return View(model);
+            }
+            return RedirectToAction("Login", "Accounts");
+        }
     }
 }

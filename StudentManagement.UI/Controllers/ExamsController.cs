@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentManagement.BLL.Services;
 using StudentManagement.Models;
+using StudentManagement.UI.Filters;
 
 namespace StudentManagement.UI.Controllers
 {
+    [RoleAuthorize(2)]
     public class ExamsController : Controller
     {
         private readonly IGroupService _groupService;

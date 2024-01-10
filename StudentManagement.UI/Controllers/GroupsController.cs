@@ -46,7 +46,7 @@ namespace StudentManagement.UI.Controllers
                 {
                     Id = student.Id,
                     Name = student.Name,
-                    IsChecked = false
+                    IsChecked = student.GroupsId == null ? false : true
                 });
             }
             return View(vm);

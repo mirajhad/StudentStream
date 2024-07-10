@@ -12,8 +12,8 @@ using StudentManagement.Data;
 namespace StudentManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240109144018_Initial")]
-    partial class Initial
+    [Migration("20240710161838_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -221,7 +221,7 @@ namespace StudentManagement.Data.Migrations
                         {
                             Id = 1,
                             Name = "Admin",
-                            Password = "admin",
+                            Password = "Admin123*",
                             Role = 1,
                             UserName = "admin"
                         });

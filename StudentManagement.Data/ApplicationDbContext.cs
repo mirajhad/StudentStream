@@ -48,7 +48,7 @@ namespace StudentManagement.Data
                 {
                     Id = 1,
                     Name = "Admin",
-                    Password = "admin",
+                    Password = "Admin123*",
                     Role = 1,
                     UserName = "admin",
                 });

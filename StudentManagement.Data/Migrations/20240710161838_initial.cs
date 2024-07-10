@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace StudentManagement.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -148,7 +148,7 @@ namespace StudentManagement.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Name", "Password", "Role", "UserName" },
-                values: new object[] { 1, "Admin", "admin", 1, "admin" });
+                values: new object[] { 1, "Admin", "Admin123*", 1, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExamResults_ExamId",
